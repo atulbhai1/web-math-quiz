@@ -59,7 +59,7 @@ def multiplying():
     return qs
 from flask import Flask, render_template, request, url_for, flash, redirect
 
-
+app.config['SECRET_KEY'] = '17bb05ad203765f49322692652f2bf6d761bf939885c0fc6'
 app = Flask(__name__)
 Bootstrap(app)
 test = "Mixed"
