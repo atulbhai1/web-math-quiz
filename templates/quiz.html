@@ -7,12 +7,14 @@
 <form method="post" style="background-color:teal; border=green; border-width:5px; border-style:solid">
     {% for question in data %}
     <br>
+        <h3>Q #{{question[0]}}</h3>
         <label for="{{question[0]}}">{{question[1]}}</label>
         <br>
         <input type="text" name="{{question[0]}}" id="{{question[0]}}"
                placeholder="10"
                value="{{ request.form['{{question[0]}}'] }}">
     {% endfor %}
+    <br>
     <button type="submit">Submit</button>
     </form>
 </body>
