@@ -4,83 +4,17 @@
 <body style="background-color:tomato;">
 <h1 style="background-color:teal; border=blue;border-width:10px; border-style:outset">Quiz Questions</h1>
 <br>
-<form method="post" style="background-color:teal; border=green; border-width:5px; border-style:solid" action="/">
-
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[0][0]}}</h2>
-    <label for="one">Question: {{data[0][1]}}</label>
-    <input type="text" name="one" id="one"
+<form method="post" style="background-color:teal; border=green; border-width:5px; border-style:solid">
+    {% for question in data %}
+    <br>
+        <label for="{{question[0]}}">{{question[1]}}</label>
+        <br>
+        <input type="text" name="{{question[0]}}" id="{{question[0]}}"
                placeholder="10"
-               value="{{ request.form['thestart'] }}">
-
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[1][0]}}</h2>
-    <h3>Question: {{data[1][1]}}</h3>
-    <input type="number" name="two" id="two"
-               placeholder="10"
-               value="{{request.form['two']}}">
-
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[2][0]}}</h2>
-    <h3>Question: {{data[2][1]}}</h3>
-    <input type="number" name="three" id="three"
-               placeholder="10"
-               value="{{request.form['three']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[3][0]}}</h2>
-    <h3>Question: {{data[3][1]}}</h3>
-    <input type="number" name="four" id="four"
-               placeholder="10"
-               value="{{request.form['four']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[4][0]}}</h2>
-    <h3>Question: {{data[4][1]}}</h3>
-    <input type="number" name="five" id="five"
-               placeholder="10"
-               value="{{request.form['five']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[5][0]}}</h2>
-    <h3>Question: {{data[5][1]}}</h3>
-    <input type="number" name="six" id="six"
-               placeholder="10"
-               value="{{request.form['six']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[6][0]}}</h2>
-    <h3>Question: {{data[6][1]}}</h3>
-    <input type="number" name="seven" id="seven"
-               placeholder="10"
-               value="{{request.form['seven']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[7][0]}}</h2>
-    <h3>Question: {{data[7][1]}}</h3>
-    <input type="number" name="eight" id="eight"
-               placeholder="10"
-               value="{{request.form['eight']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[8][0]}}</h2>
-    <h3>Question: {{data[8][1]}}</h3>
-    <input type="number" name="nine" id="nine"
-               placeholder="10"
-               value="{{request.form['nine']}}">
-</section>
-<section style="background-color:teal; border=blue;border-width:10px; border-style:outset">
-    <h2>Number: {{data[9][0]}}</h2>
-    <h3>Question: {{data[9][1]}}</h3>
-    <input type="number" name="ten" id="ten"
-               placeholder="10"
-               value="{{request.form['ten']}}">
-</section>
-<br>
-<input type="submit" value="Submit" name="Submit" id="Submit">
-</form>
+               value="{{ request.form['{{question[0]}}'] }}">
+    {% endfor %}
+    <button type="submit">Submit</button>
+    </form>
 </body>
 <head>
 </html>
