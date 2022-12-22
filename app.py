@@ -1,61 +1,266 @@
 from random import randint
 from flask_bootstrap import Bootstrap
-def addingQ(k):
+superscript = "⁰¹²³⁴⁵⁶⁷⁸⁹"
+def exponentsQEASY(k):
+    a = randint(0, 5)
+    b = randint(0, 5)
+    symbol = superscript[b]
+    q = f"{a}{symbol}= "
+    ans = a**b
+    return [k, q,ans]
+def exponentsQMIX(k):
+    choice = randint(1,4)
+    if choice == 1:
+        return exponentsQEASY(k)
+    elif choice == 2:
+        return exponentsQMED(k)
+    else:
+        return exponentsQHARD(k)
+def exponentsQMED(k):
+    a = randint(0, 10)
+    b = randint(0, 7)
+    symbol = superscript[b]
+    q = f"{a}{symbol}= "
+    ans = a**b
+    return [k, q, ans]
+def exponentsQHARD(k):
+    a = randint(0, 10)
+    b = randint(0, 10)
+    c = randint(1, 6)
+    symbol = superscript[c]
+    q = f"{a}({b}){symbol}= "
+    ans = a*(b**c)
+    return [k, q, ans]
+def addingQEASY(k):
+    a = randint(0, 100)
+    b = randint(0, 100)
+    q = f"{a} + {b} = "
+    ans = a+b
+    return [k, q,ans]
+def addingQMIX(k):
+    choice = randint(1,4)
+    if choice == 1:
+        return addingQEASY(k)
+    elif choice == 2:
+        return addingQMED(k)
+    else:
+        return addingQHARD(k)
+def addingQMED(k):
+    a = randint(0, 1000)
+    b = randint(0, 1000)
+    q = f"{a} + {b} = "
+    ans = a+b
+    return [k, q,ans]
+def addingQHARD(k):
     a = randint(0, 10000)
     b = randint(0, 10000)
     q = f"{a} + {b} = "
     ans = a+b
     return [k, q,ans]
-def subtractingQ(k):
+def subtractingQEASY(k):
+    a = randint(0, 100)
+    b = randint(0, 100)
+    q = f"{a} - {b} = "
+    ans = a-b
+    return [k, q,ans]
+def subtractingQMIX(k):
+    choice = randint(1,4)
+    if choice == 1:
+        return subtractingQEASY(k)
+    elif choice == 2:
+        return subtractingQMED(k)
+    else:
+        return subtractingQHARD(k)
+def subtractingQMED(k):
+    a = randint(0, 1000)
+    b = randint(0, 1000)
+    q = f"{a} - {b} = "
+    ans = a-b
+    return [k, q,ans]
+def subtractingQHARD(k):
     a = randint(0, 10000)
     b = randint(0, 10000)
     q = f"{a} - {b} = "
     ans = a-b
-    return [k,q,ans]
-def multiplyingQ(k):
+    return [k, q,ans]
+def multiplyingQEASY(k):
     a = randint(0, 100)
     b = randint(0, 100)
     q = f"{a} x {b} = "
     ans = a*b
-    return [k,q,ans]
-def dividingQ(k):
+    return [k, q,ans]
+def multiplyingQMIX(k):
+    choice = randint(1,4)
+    if choice == 1:
+        return multiplyingQEASY(k)
+    elif choice == 2:
+        return multiplyingQMED(k)
+    else:
+        return multiplyingQHARD(k)
+def multiplyingQMED(k):
+    a = randint(0, 1000)
+    b = randint(0, 1000)
+    q = f"{a} x {b} = "
+    ans = a*b
+    return [k, q,ans]
+def multiplyingQHARD(k):
+    a = randint(0, 10000)
+    b = randint(0, 10000)
+    q = f"{a} x {b} = "
+    ans = a*b
+    return [k, q,ans]
+def dividingQEASY(k):
     a = randint(0, 100)
     b = randint(0, 100)
+    q = f"{a} ➗{b} = "
+    ans = a//b
+    return [k, q,ans]
+def dividingQMIX(k):
+    choice = randint(1,4)
+    if choice == 1:
+        return dividingQEASY(k)
+    elif choice == 2:
+        return dividingQMED(k)
+    else:
+        return dividingQHARD(k)
+def dividingQMED(k):
+    a = randint(0, 1000)
+    b = randint(0, 1000)
     q = f"{a} ➗ {b} = "
     ans = a//b
-    return [k,q,ans]
-def mixed():
+    return [k, q,ans]
+def dividingQHARD(k):
+    a = randint(0, 10000)
+    b = randint(0, 10000)
+    q = f"{a} ➗ {b} = "
+    ans = a//b
+    return [k, q,ans]
+def mixedEasy():
     qs = []
     for i in range(1,11):
         c= randint(1, 4)
         if c==1:
-            qs.append(addingQ(i))
+            qs.append(addingQEASY(i))
         elif c==2:
-            qs.append(subtractingQ(i))
+            qs.append(subtractingQEASY(i))
         elif c==3:
-            qs.append(multiplyingQ(i))
+            qs.append(multiplyingQEASY(i))
         elif c==4:
-            qs.append(dividingQ(i))
+            qs.append(dividingQEASY(i))
     return qs
-def addition():
+def mixedMED():
     qs = []
+    for i in range(1,11):
+        c= randint(1, 4)
+        if c==1:
+            qs.append(addingQMED(i))
+        elif c==2:
+            qs.append(subtractingQMED(i))
+        elif c==3:
+            qs.append(multiplyingQMED(i))
+        elif c==4:
+            qs.append(dividingQMED(i))
+    return qs
+def mixedHARD():
+    qs = []
+    for i in range(1,11):
+        c= randint(1, 4)
+        if c==1:
+            qs.append(addingQHARD(i))
+        elif c==2:
+            qs.append(subtractingQHARD(i))
+        elif c==3:
+            qs.append(multiplyingQHARD(i))
+        elif c==4:
+            qs.append(dividingQHARD(i))
+    return qs
+def mixedMIX():
+    qs = []
+    for i in range(1,11):
+        c= randint(1, 4)
+        if c==1:
+            qs.append(addingQMIX(i))
+        elif c==2:
+            qs.append(subtractingQMIX(i))
+        elif c==3:
+            qs.append(multiplyingQMIX(i))
+        elif c==4:
+            qs.append(dividingQMIX(i))
+    return qs
+def addition(level="MIX"):
+    qs = []
+    if level == "EASY":
+        f = addingQEASY
+    elif level == "MED":
+        f = addingQMED
+    elif level == "HARD":
+        f = addingQHARD
+    else:
+        f = addingQMIX
     for i in range(1, 11):
-        qs.append(addingQ(i))
+        qs.append(f(i))
     return qs
-def division():
+def division(level="MIX"):
     qs = []
+    if level == "EASY":
+        f = divisionQEASY
+    elif level == "MED":
+        f = divisionQMED
+    elif level == "HARD":
+        f = divisionQHARD
+    else:
+        f = divisionQMIX
     for i in range(1,11):
-        qs.append(dividingQ(i))
+        qs.append(f(i))
     return qs
-def subtraction():
+def subtraction(level="MIX"):
     qs = []
+    if level == "EASY":
+        f = subtractingQEASY
+    elif level == "MED":
+        f = subtractingQMED
+    elif level == "HARD":
+        f = subtractingQHARD
+    else:
+        f = subtractingQMIX
     for i in range(1,11):
-        qs.append(subtractingQ(i))
+        qs.append(f(i))
     return qs
-def multiplying():
+def multiplying(level="MIX"):
     qs = []
+    if level == "EASY":
+        f = multiplyingQEASY
+    elif level == "MED":
+        f = multiplyingQMED
+    elif level == "HARD":
+        f = multiplyingQHARD
+    else:
+        f = multiplyingQMIX
     for i in range(1,11):
-        qs.append(multiplyingQ(i))
+        qs.append(f(i))
+    return qs
+def mixed(level="MIX"):
+    if level == "EASY":
+        f = mixedEASY
+    elif level == "MED":
+        f = mixedMED
+    elif level == "HARD":
+        f = mixedHARD
+    else:
+        f = mixedMIX
+    return f()
+def exponents(level="MIX"):
+    qs = []
+    if level == "EASY":
+        f = exponentsQEASY
+    elif level == "MED":
+        f = exponentsQMED
+    elif level == "HARD":
+        f = exponentsQHARD
+    else:
+        f = exponentsQMIX
+    for i in range(1,11):
+        qs.append(f(i))
     return qs
 from flask import Flask, render_template, request, url_for, flash, redirect
 
@@ -72,15 +277,18 @@ def home():
     global test, data
     if request.method == 'POST':
         test = request.form.get('choice')
+        diff = request.form.get('level')
         print(test)
         if test == "Addition":
-            qs = addition()
+            qs = addition(diff)
         elif test == "Subtraction":
-            qs = subtraction()
+            qs = subtraction(diff)
         elif test == "Multiplication":
-            qs = multiplying()
+            qs = multiplying(diff)
         elif test == "Division":
-            qs = division()
+            qs = division(diff)
+        elif test == "Exponents":
+            qs = exponents(diff)
         else:
             qs = mixed()
         data = qs
