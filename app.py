@@ -300,16 +300,11 @@ def quiz():
     global data, responses, score
     if request.method == 'POST':
         print("gotthere")
-        responses['1'] = request.form['1']
-        responses['2'] = request.form['2']
-        responses['3'] = request.form['3']
-        responses['4'] = request.form['4']
-        responses['5'] = request.form['5']
-        responses['6'] = request.form['6']
-        responses['7'] = request.form['7']
-        responses['8'] = request.form['8']
-        responses['9'] = request.form['9']
-        responses['10'] = request.form['10']
+        for i in range(1,11):
+            if request.form[f'{i}']:
+                responses[f'{i}'] = request.form[f'{i}']
+            else:
+                responses[f'{i}'] = "42365864526985431367459765492546968254923645923465237452345623549623594763259472452937645946249252694532945274563297459745294659247"
         t = 0
         for d in data:
             if int(float(responses[f'{d[0]}'])) == d[2]:
